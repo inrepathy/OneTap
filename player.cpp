@@ -4,21 +4,22 @@
 #include "boner.h"
 #include "autowall.h"
 
-mstudiobbox_t* c_base_entity::get_hitbox( int hitbox )
+mstudiobbox_t* c_base_entity::get_hitbox(int hitbox)
 {
-	if ( !model( ) )
-		return false;
+	if (!model())
+		return nullptr;
 
-	studiohdr_t* hdr = csgo.m_model_info( )->GetStudioModel( model( ) );
-	if ( !hdr )
-		return false;
+	studiohdr_t* hdr = csgo.m_model_info()->GetStudioModel(model());
+	if (!hdr)
+		return nullptr;
 
-	mstudiohitboxset_t* set = hdr->pHitboxSet( hitbox_set( ) );
-	if ( !set )
-		return false;
+	mstudiohitboxset_t* set = hdr->pHitboxSet(hitbox_set());
+	if (!set)
+		return nullptr;
 
-	return set->pHitbox( hitbox );
+	return set->pHitbox(hitbox);
 }
+
 
 bool c_base_entity::get_hitbox_position( int hitbox, vec3& out )
 {
